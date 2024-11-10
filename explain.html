@@ -60,9 +60,9 @@
     #banner {
       display: block;
       margin: 0 auto;
-      width: 100%;         
-      height: 100%;       
-      object-fit: cover;  
+      width: 100%;         /* 부모 요소의 너비에 맞게 100% 확장 */
+      height: 100%;        /* 부모 요소의 높이에 맞게 100% 확장 */
+      object-fit: cover;   /* 비율을 유지하면서 이미지가 부모 요소를 가득 채우도록 설정 */
     }
 
     #intro {
@@ -75,32 +75,32 @@
 
     article {
     display: flex;
-    flex-direction: column; 
-    align-items: center;    
-    justify-content: center; 
-    text-align: center;      
+    flex-direction: column; /* 수직 배치를 위한 설정 */
+    align-items: center;    /* 수평 방향 중앙 정렬 */
+    justify-content: center; /* 수직 방향 중앙 정렬 */
+    text-align: center;      /* 텍스트 중앙 정렬 */
     height: auto
     }
 
     h1 {
-      font-size: 2.5em;       
-      margin: 20px 0;        
+      font-size: 2.5em;       /* 원하는 크기로 설정 */
+      margin: 20px 0;         /* 상하 여백 추가 */
     }
 
     p {
       color: #ffffffab;
-      font-size: 1.5em;       
-      margin: 50px 0;        
+      font-size: 1.5em;       /* 원하는 크기로 설정 */
+      margin: 50px 0;         /* 상하 여백 추가 */
     }
 
     footer {
-      background-color: #f589ffaa; 
-      color: #282828; 
+      background-color: #f589ffaa; /* 원하는 색으로 변경 (여기서는 어두운 회색) */
+      color: #282828; /* 텍스트 색상도 변경할 수 있음 */
       text-align: center;   
       margin: 50px 0; 
     }
 
-    #npc { transition: transform 1s; }
+    #rotateImage { transition: transform 1s; }
   </style>
 </head>
 <body>
@@ -109,66 +109,33 @@
 
     <nav class="menu">
       <ul>
-        <li><a href="../explain.html">회사 소개</a></li>
-        <li><a href="../news.html">소식</a></li>
-        <li><a href="../game.html">플레이</a></li>
+        <li><a href="./index.html">메인</a></li>
+        <li><a href="./news.html">소식</a></li>
+        <li><a href="./game.html">플레이</a></li>
       </ul>
     </nav>
   </header>
 
   <section>
     <article>
-      <img id="banner" src="../media/banner1.png"></img>
+      <img id="banner" src="./media/explain.png"></img>
     </article>
   </section>
 
   <section>
     <article>
-      <img id="intro" src="../media/intro2.png">
-      <h1>When in doubt, choose change.</h1>
-      <p>
-        내용내용내용내용내용내용내용내용내용내용<br>
-        내용내용내용내용내용내용내용내용내용내용<br>
-        내용내용내용내용내용내용내용내용내용내용
-      </p>
-    </article>
-  </section>
-
-  <section>
-    <article>
-      <img id="intro" src="../media/npc.png">
-      <img id="npc" src="../media/mutoNpc.png" onclick="rotate()">
-      <h1>< 캐릭터 이름 ></h1>
-      <p>
-        내용내용내용내용내용내용내용내용내용내용<br>
-        내용내용내용내용내용내용내용내용내용내용<br>
-        내용내용내용내용내용내용내용내용내용내용
-      </p>
-    </article>
-  </section>
-
-  <section>
-    <article>
-      <img id="intro" src="../media/contact.png">
-      <h1>주소, 전화번호, 기타</h1>
-      <p> 주소 | 내용내용내용내용내용내용내용내용내용내용<br><br>
-        전화번호 | 내용내용내용내용내용내용내용내용내용<br><br>
-        기타 | 내용내용내용내용내용내용내용내용내용내용</p>
+      <img id="intro" src="./media/explain_three.png">
+      <img id="intro" src="./media/v1.png">
+      <h1>내용1</h1>
+      <img id="intro" src="./media/v2.png">
+      <h1>내용2</h1>
+      <img id="intro" src="./media/v3.png">
+      <h1>내용3</h1>
     </article>
   </section>
 
   <footer>
     <br><br>
   </footer>
-
-  <script>
-    let deg = 0;
-    let image = document.getElementById("npc");
-
-    function rotate() {
-      deg = deg + 360; 
-      image.style.transform = "rotate(" + deg + "deg)";
-    } 
-  </script>
 </body>
 </html>
