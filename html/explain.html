@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Muto</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    @font-face {
+      font-family:'bitbit';
+      src: url('https://cdn.df.nexon.com/img/common/font/DNFBitBit-Regular.woff'),
+      url('https://cdn.df.nexon.com/img/common/font/DNFBitBit-Regular.woff2');
+    }
+
+    body {
+      font-family:'bitbit';
+      color: #f589ff;
+      background-color: #282828;
+    }
+
+    header {
+
+      position: sticky;
+      padding: 20px;
+      padding-top: 20px;
+      top: -20px;
+
+      backdrop-filter: blur(5px);
+      background: #282828de;
+      color: #f589ffaa;
+
+      height: 75px;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    li {
+      font-family:'bitbit';
+      display: inline-block;
+      margin-left: 30px;
+      font-size: 27px;
+      font-weight: bold;
+    }
+
+    a {
+      color: #f589ffaa;
+      text-decoration: none;
+    }
+
+    .logo {
+      font-size: 40px;
+    }
+
+    #banner {
+      display: block;
+      margin: 0 auto;
+      width: 100%;         /* 부모 요소의 너비에 맞게 100% 확장 */
+      height: 100%;        /* 부모 요소의 높이에 맞게 100% 확장 */
+      object-fit: cover;   /* 비율을 유지하면서 이미지가 부모 요소를 가득 채우도록 설정 */
+    }
+
+    #intro {
+      display: block;
+      margin: 0 auto;
+      width: 60%;
+      height: auto;
+      text-align:center;
+    }
+
+    article {
+    display: flex;
+    flex-direction: column; /* 수직 배치를 위한 설정 */
+    align-items: center;    /* 수평 방향 중앙 정렬 */
+    justify-content: center; /* 수직 방향 중앙 정렬 */
+    text-align: center;      /* 텍스트 중앙 정렬 */
+    height: auto
+    }
+
+    h1 {
+      font-size: 2.5em;       /* 원하는 크기로 설정 */
+      margin: 20px 0;         /* 상하 여백 추가 */
+    }
+
+    p {
+      color: #ffffffab;
+      font-size: 1.5em;       /* 원하는 크기로 설정 */
+      margin: 50px 0;         /* 상하 여백 추가 */
+    }
+
+    footer {
+      background-color: #f589ffaa; /* 원하는 색으로 변경 (여기서는 어두운 회색) */
+      color: #282828; /* 텍스트 색상도 변경할 수 있음 */
+      text-align: center;   
+      margin: 50px 0; 
+    }
+
+    #rotateImage { transition: transform 1s; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">Muto C</div>
+
+    <nav class="menu">
+      <ul>
+        <li><a href="../html/main.html">메인</a></li>
+        <li><a href="../html/news.html">소식</a></li>
+        <li><a href="../html/game.html">플레이</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section>
+    <article>
+      <img id="banner" src="../media/explain.png"></img>
+    </article>
+  </section>
+
+  <section>
+    <article>
+      <img id="intro" src="../media/explain_three.png">
+      <img id="intro" src="../media/v1.png">
+      <h1>내용1</h1>
+      <img id="intro" src="../media/v2.png">
+      <h1>내용2</h1>
+      <img id="intro" src="../media/v3.png">
+      <h1>내용3</h1>
+    </article>
+  </section>
+
+  <footer>
+    <br><br>
+  </footer>
+
+  <script>
+    let deg = 0;
+    let image = document.getElementById("rotateImage");
+
+    function rotate() {
+      deg = deg + 360; 
+      image.style.transform = "rotate(" + deg + "deg)";
+    } 
+  </script>
+</body>
+</html>
