@@ -1,0 +1,87 @@
+@font-face {
+    font-family:'bitbit';
+    src: url('https://cdn.df.nexon.com/img/common/font/DNFBitBit-Regular.woff'),
+    url('https://cdn.df.nexon.com/img/common/font/DNFBitBit-Regular.woff2');
+}
+
+body {
+    font-family:'bitbit';
+    color: #f589ff;
+    background-color: #282828;
+}
+
+header {
+    position: sticky;
+    padding: 20px;
+    top: -20px;
+
+    backdrop-filter: blur(4px);
+    background: #282828de;
+    color: #f589ffaa;
+    
+    height: 75px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+li {
+    font-family:'bitbit';
+    display: inline-block;
+    margin-left: 30px;
+    font-size: 27px;
+}
+
+a {
+    color: #f589ffaa;
+    text-decoration: none; 
+}
+
+.logo {
+    font-size: 40px;
+}
+
+#banner {
+    display: block;
+    margin: 0 auto;        
+    width: 100%;        
+    height: 100%;
+}
+
+#intro {
+    display: block;
+    margin: 0 auto;
+    width: 60%;
+    height: auto;
+    text-align:center;
+}
+
+article {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;    
+    justify-content: center; 
+    text-align: center;     
+    height: auto
+}
+
+h1 {
+    font-size: 45px;       
+    margin: 20px;        
+}
+
+p {
+    color: #ffffffab;
+    font-size: 40px;       
+    margin: 50px;         
+}
+
+footer {
+    background-color: #f589ffaa; 
+    color: #282828; 
+    text-align: center;   
+    margin: 50px 0; 
+}
+
+#npc { transition: transform 1s; }
