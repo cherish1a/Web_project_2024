@@ -113,7 +113,7 @@ var animation;
 var gameStarted = false; // 게임 시작 여부
 var gameOver = false; //게임 끝 여부
 
-let nextObstacleTime = Math.floor(Math.random() * 200) + 30;
+let nextObstacleTime = Math.floor(Math.random() * 200) + 20;
 
 // 게임 시작 화면 그리기
 function drawStartScreen() {
@@ -124,6 +124,7 @@ function drawStartScreen() {
 
 // 게임 시작 함수
 function startGame() {
+    score = 0;
     gameStarted = true;
     startScreenDisplayed = false;
     frame(); // 게임 루프 시작
@@ -222,7 +223,7 @@ function frame(){
     }
 
     //점수 증가
-    if(timer%5 === 0){
+    if(timer%10 === 0){
         score++;
     }
 
