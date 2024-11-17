@@ -124,7 +124,6 @@ function drawStartScreen() {
 
 // 게임 시작 함수
 function startGame() {
-    score = 0;
     gameStarted = true;
     startScreenDisplayed = false;
     frame(); // 게임 루프 시작
@@ -268,6 +267,7 @@ document.addEventListener('mousedown', function () {
         cactusSpeed = 5;
         gameStarted = false; 
         gameOver = false;
+        nextObstacleTime = Math.floor(Math.random() * 200) + 30;
         //게임 오버 후 재시작
         startGame(); 
     }
