@@ -183,7 +183,7 @@ function frame(){
         }
 
         cactus_arr.push(obstacle); // 생성된 장애물 배열에 추가
-        nextObstacleTime = timer + Math.floor(Math.random() * 200) + 50; 
+        nextObstacleTime = timer + Math.floor(Math.random() * 200) + 30; 
     }
 
     cactus_arr.forEach((a, i, arr)=>{
@@ -261,13 +261,13 @@ document.addEventListener('mousedown', function () {
         //초기화
         score = 0;
         timer = 0;
+        nextObstacleTime = Math.floor(Math.random() * 200) + 30;
         jump = false;
         jump_timer = 0;
         cactus_arr = [];
         cactusSpeed = 5;
         gameStarted = false; 
         gameOver = false;
-        nextObstacleTime = Math.floor(Math.random() * 200) + 30;
         //게임 오버 후 재시작
         startGame(); 
     }
