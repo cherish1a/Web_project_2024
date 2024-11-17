@@ -183,7 +183,7 @@ function frame(){
         }
 
         cactus_arr.push(obstacle); // 생성된 장애물 배열에 추가
-        nextObstacleTime = timer + Math.floor(Math.random() * 200) + 30; 
+        nextObstacleTime = timer + Math.floor(Math.random() * 200) + 40; 
     }
 
     cactus_arr.forEach((a, i, arr)=>{
