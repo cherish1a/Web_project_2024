@@ -202,7 +202,7 @@ function frame(){
 
     //점프 
     if(jump) {
-        dino.y -= 10; 
+        dino.y -= 20; 
         jump_timer++; 
 
         if(jump_timer > 15) {
@@ -211,7 +211,7 @@ function frame(){
         }
     } else { 
         if(dino.y < 200) {
-            dino.y += 10; 
+            dino.y += 20; 
         } 
     }
 
