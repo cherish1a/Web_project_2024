@@ -1,17 +1,17 @@
-var canvas = document.getElementById('canvas');
-var ctx = canvas.getContext('2d');
+let canvas = document.getElementById('canvas');
+let ctx = canvas.getContext('2d');
 
-var gameOverImage = new Image();
+let gameOverImage = new Image();
 gameOverImage.src = './media/game/over.png';
 
 //공룡 이미지
-var dinoImg = new Image();
+let dinoImg = new Image();
 dinoImg.src = './media/game/dino.png';
-var dino2Img = new Image();
+let dino2Img = new Image();
 dino2Img.src = './media/game/dino2.png';
-var dinoDownImg = new Image();
+let dinoDownImg = new Image();
 dinoDownImg.src = './media/game/dino_down.png';
-var dinoJumpImg = new Image();
+let dinoJumpImg = new Image();
 dinoJumpImg.src = './media/game/dino_jump.png';
 
 //공룡
@@ -39,16 +39,16 @@ var dino = {
 }
 
 //장애물 이미지
-var bigImg = new Image();
+let bigImg = new Image();
 bigImg.src = './media/game/big.png';
 
-var smallImg = new Image();
+let smallImg = new Image();
 smallImg.src = './media/game/small.png';
 
-var midImg = new Image();
+let midImg = new Image();
 midImg.src = './media/game/mid.png';
 
-var birdImg = new Image();
+let birdImg = new Image();
 birdImg.src = './media/game/airplane.png';
 
 class Obstacle {
@@ -93,25 +93,26 @@ class Bird extends Obstacle {
 
 
 // 배경 이미지 설정
-var frontBgImage = new Image(); // 앞 배경
+let frontBgImage = new Image(); // 앞 배경
 frontBgImage.src = "./media/game/front.png";
 
-var backBgImage = new Image(); // 뒤 배경
+let backBgImage = new Image(); // 뒤 배경
 backBgImage.src = "./media/game/back.png";
 
 // 배경의 x 좌표 초기화
-var frontBgX = 0;
-var backBgX = 0;
+let frontBgX = 0;
+let backBgX = 0;
 
-var score = 0;
-var timer = 0;
-var jump = false;
-var jump_timer = 0;
-var cactus_arr = [];
-var cactusSpeed = 5;
-var animation;
-var gameStarted = false; // 게임 시작 여부
-var gameOver = false; //게임 끝 여부
+//변수 정리
+let score = 0;
+let timer = 0;
+let jump = false;
+let jump_timer = 0;
+let cactus_arr = [];
+let cactusSpeed = 5;
+let animation;
+let gameStarted = false; // 게임 시작 여부
+let gameOver = false; //게임 끝 여부
 
 let nextObstacleTime = Math.floor(Math.random() * 200) + 20;
 
@@ -243,7 +244,7 @@ function crash(dino, obstacle){
     return (dino.x < obstacle.x + obstacle.width &&
     dino.x + dino.width > obstacle.x &&
     dino.y < obstacle.y + obstacle.height &&
-    dino.y + dino.height > obstacle.y)
+    dino.y + dino.height > obstacle.y);
 }
 
 // 키보드나 마우스 클릭으로 게임 시작
@@ -276,12 +277,12 @@ document.addEventListener('mousedown', function () {
 
 document.addEventListener('keydown', function(e){
     //dino.y === 200은 더블 점프 방지
-    if((e.code === 'Space' || e.code === 'mousedown') && dino.y === 200){
+    if((e.code === 'Space' || e.code === 'mousedown') && dino.y === 199){
         jump = true;
     } 
     
     if (e.code === 'ArrowDown') {
-        if (!dino.isCrouching && dino.y === 200) {
+        if (!dino.isCrouching && dino.y === 199) {
             dino.isCrouching = true; // 엎드리기
             dino.height = 50; // 엎드린 높이로 줄이기
             dino.width = 70;
@@ -292,7 +293,7 @@ document.addEventListener('keydown', function(e){
 
 // 좌클릭도 점프되게
 document.addEventListener('mousedown', function (e) {
-    if (e.button === 0 && dino.y === 200) { 
+    if (e.button === 0 && dino.y === 199) { 
         jump = true;
     }
 });
