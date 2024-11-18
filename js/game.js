@@ -201,19 +201,13 @@ function frame(){
 
 
     //점프 
-    if (dino.isCrouching) {
-        dino.y = 220; //y 고정
-    } else if (jump) {
+    if (jump) {
         dino.y -= 7; // 점프 시 위로 이동
-        jumpTimer++;
-        if (jumpTimer > 25) {
-            isJumping = false; // 점프 종료
-            jumpTimer = 0;
-        }
-    } else { //엎드리기 X
+        jumpTimer++; 
+    } else { 
         if (dino.y < 200) {
             dino.y += 6; //밑으로 떨어짐
-        } else {
+        } else if ((dino.y > 200) && !dino.isCrouching){
             dino.y = 200; //땅으로 안꺼지게 
         }
     }
