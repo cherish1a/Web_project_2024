@@ -209,13 +209,10 @@ function frame(){
             jump = false; 
             jumpTimer = 0; 
         }
-    }
     } else { 
         if (dino.y < 200) {
-            dino.y += 6; //밑으로 떨어짐
-        } else if ((dino.y > 200) && !dino.isCrouching){
-            dino.y = 200; //땅으로 안꺼지게 
-        }
+            dino.y += 7; 
+        } 
     }
 
     //점수 증가
