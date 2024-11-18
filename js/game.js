@@ -1,10 +1,6 @@
 let canvas = document.getElementById('canvas');
 let ctx = canvas.getContext('2d');
 
-//게임오버 이미지
-let gameOverImage = new Image();
-gameOverImage.src = './media/game/over.png';
-
 //공룡 이미지
 let dinoImg = new Image();
 dinoImg.src = './media/game/dino.png';
@@ -135,7 +131,6 @@ function startGame() {
 // 게임 종료 화면 그리기
 function gameOverScreen() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.drawImage(gameOverImage, 0, 0, canvas.width, canvas.height); 
 
     ctx.fillStyle = "white";
     ctx.font = "30px bitbit";
@@ -185,7 +180,7 @@ function frame(){
         }
 
         cactus_arr.push(obstacle); // 생성된 장애물 배열에 추가
-        nextObstacleTime = timer + Math.floor(Math.random() * 200) + 40; 
+        nextObstacleTime = timer + Math.floor(Math.random() * 200) + 30; 
     }
 
     cactus_arr.forEach((a, i, arr)=>{
@@ -300,7 +295,7 @@ document.addEventListener('mousedown', function (e) {
 });
 
 document.addEventListener('keyup', function (e) {
-    if (e.code === 'ArrowDown' &&  dino.y >= 220) {
+    if (e.code === 'ArrowDown' &&  dino.y >= 219) {
         dino.isCrouching = false; // 엎드린 상태 해제
         dino.height = 60; // 기본 높이로 복구
         dino.width = 50;
