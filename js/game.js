@@ -209,17 +209,17 @@ function frame(){
 
     //점프 기능
     if(jump){
-        dino.y -= 8;
+        dino.y -= 7;
         jump_timer++;
 
-        if(jump_timer > 19){
+        if(jump_timer > 20){
             jump = false;
             jump_timer = 0;
         }
 
     } else {
         if(dino.y < 200) {
-            dino.y += 8;
+            dino.y += 7;
         }
     }
 
