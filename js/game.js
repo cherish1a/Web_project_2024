@@ -180,7 +180,7 @@ function frame(){
         }
 
         cactus_arr.push(obstacle); // 생성된 장애물 배열에 추가
-        nextObstacleTime = timer + Math.floor(Math.random() * 200) + 30; 
+        nextObstacleTime = timer + Math.floor(Math.random() * 200) + 25; 
     }
 
     cactus_arr.forEach((a, i, arr)=>{
@@ -271,7 +271,7 @@ document.addEventListener('mousedown', function () {
 
 document.addEventListener('keydown', function(e){
     //dino.y >= 195은 더블 점프 방지
-    if((e.code === 'Space' || e.code === 'mousedown') && dino.y >= 195){
+    if(e.code === 'Space' && dino.y >= 195 && !jump){
         jump = true;
     } 
     
@@ -287,7 +287,7 @@ document.addEventListener('keydown', function(e){
 
 // 좌클릭도 점프되게
 document.addEventListener('mousedown', function (e) {
-    if (e.button === 0 && dino.y >= 195) { 
+    if (e.button === 0 && dino.y >= 195  && !jump) { 
         jump = true;
     }
 });
