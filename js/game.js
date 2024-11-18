@@ -211,7 +211,7 @@ function frame(){
         }
     } else { 
         if(dino.y < 200) {
-            dino.y += 10; 
+            dino.y += 9; 
         } 
     }
 
