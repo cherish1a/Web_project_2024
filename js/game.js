@@ -202,17 +202,16 @@ function frame(){
 
     //점프 
     if(jump) {
-        dino.y -= 8; // 점프 시 위로 이동
+        dino.y -= 7; 
         jumpTimer++; 
 
         if(jumpTimer > 18) {
             jump = false; 
             jumpTimer = 0; 
         }
-        
     } else { 
         if(dino.y < 200) {
-            dino.y += 8; 
+            dino.y += 7; 
         } 
     }
 
