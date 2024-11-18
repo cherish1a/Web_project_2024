@@ -193,6 +193,7 @@ function frame(){
         if (!gameOver && crash(dino, a)) {
             cancelAnimationFrame(animation);
             gameOver = true; // 게임 종료
+            gameOverScreen();
         }
 
         if (!gameOver) a.draw();
@@ -230,11 +231,6 @@ function frame(){
     }
 
     dino.draw();
-
-    //게임 종료 화면 표시
-    if (gameOver) {
-        gameOverScreen();
-    }
 }
 
 //충돌 확인
@@ -278,8 +274,9 @@ document.addEventListener('keydown', function(e){
     if((e.code === 'Space' || e.code === 'mousedown') && dino.y >= 195){
         jump = true;
     } 
+    
     if (e.code === 'ArrowDown') {
-        if(!jump && !isCrouching && dino.y >= 195){
+        if(!jump && !dino.isCrouching && dino.y >= 195){
             dino.isCrouching = true; // 엎드리기
             dino.height = 50; // 엎드린 높이로 줄이기
             dino.width = 70;
