@@ -1,6 +1,7 @@
 let canvas = document.getElementById('canvas');
 let ctx = canvas.getContext('2d');
 
+//게임오버 이미지지
 let gameOverImage = new Image();
 gameOverImage.src = './media/game/over.png';
 
@@ -25,12 +26,12 @@ var dino = {
     walkFrame: 0,
     draw(){
         if (this.isCrouching) {
-            ctx.drawImage(dinoDownImg, this.x, this.y); // 엎드린 이미지
+            ctx.drawImage(dinoDownImg, this.x, this.y); // 엎드림
         } else if(jump == true) {
-            ctx.drawImage(dinoJumpImg, this.x, this.y); // 기본 이미지
+            ctx.drawImage(dinoJumpImg, this.x, this.y); // 점프
         } else {
-            if (this.walkFrame === 0) {
-                ctx.drawImage(dinoImg, this.x, this.y);
+            if (this.walkFrame === 0) { //기본
+                ctx.drawImage(dinoImg, this.x, this.y); 
             } else {
                 ctx.drawImage(dino2Img, this.x, this.y);
             }
@@ -51,13 +52,14 @@ midImg.src = './media/game/mid.png';
 let birdImg = new Image();
 birdImg.src = './media/game/airplane.png';
 
+//장애물
 class Obstacle {
     constructor(speed, type = "default") {
         this.x = 1000;
         this.speed = speed;
         this.type = type;
         
-        // 크기 설정: type에 따라 크기 다르게 설정
+        // 타입에 따라 크기 다르게 설정
         if (this.type === "big") {
             this.y = 195; 
             this.width = 40; 
@@ -69,23 +71,23 @@ class Obstacle {
             this.height = 30; 
             this.image = smallImg;
         } else {
-            this.y = 215; // 기본 선인장은 y=200
-            this.width = 30; // 기본 선인장은 너비 30
-            this.height = 50; // 기본 선인장은 높이 50
+            this.y = 215; // 기본 선인장
+            this.width = 30; 
+            this.height = 50; 
             this.image = midImg;
         }
     }
 
     draw() {
-        ctx.drawImage(this.image, this.x, this.y, this.width, this.height); // 크기 및 위치에 맞게 그리기
+        ctx.drawImage(this.image, this.x, this.y, this.width, this.height); 
     }
 }
-
+//장애물 추가
 class Bird extends Obstacle {
     constructor(speed) {
-        super(speed, "bird"); // Bird는 기본적으로 'bird' 타입
-        this.width = 50; // 새의 너비는 50
-        this.height = 20; // 새의 높이는 20
+        super(speed, "bird"); 
+        this.width = 50; 
+        this.height = 20; 
         this.y = Math.random() < 0.5 ? 220 : 185;  
         this.image = birdImg;
     }
@@ -99,7 +101,7 @@ frontBgImage.src = "./media/game/front.png";
 let backBgImage = new Image(); // 뒤 배경
 backBgImage.src = "./media/game/back.png";
 
-// 배경의 x 좌표 초기화
+// 배경 x좌표 
 let frontBgX = 0;
 let backBgX = 0;
 
@@ -162,7 +164,6 @@ function frame(){
     }
 
     // 배경 그리기
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.drawImage(backBgImage, backBgX, 0, canvas.width, canvas.height); // 뒷 배경
     ctx.drawImage(backBgImage, backBgX + canvas.width, 0, canvas.width, canvas.height);
 
