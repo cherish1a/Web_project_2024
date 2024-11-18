@@ -115,7 +115,7 @@ let gameOver = false; //게임 끝 여부
 let nextObstacleTime = Math.floor(Math.random() * 200) + 20;
 
 // 게임 시작 화면 그리기
-function drawStartScreen() {
+function gameStartScreen() {
     ctx.fillStyle = "white";
     ctx.font = "30px bitbit";
     ctx.fillText("Press Space or Click to Start", canvas.width / 3, canvas.height / 2);
@@ -190,15 +190,12 @@ function frame(){
         }
         a.x-=cactusSpeed;
 
-        a.draw();
-
-        //충돌 체크
-        if(crash(dino, a)){
+        if (!gameOver && crash(dino, a)) {
             cancelAnimationFrame(animation);
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            gameOver = true;
-            gameOverScreen();
+            gameOver = true; // 게임 종료
         }
+
+        if (!gameOver) a.draw();
     })
 
 
@@ -275,9 +272,7 @@ document.addEventListener('keydown', function(e){
     //dino.y >= 195은 더블 점프 방지
     if((e.code === 'Space' || e.code === 'mousedown') && dino.y >= 195){
         jump = true;
-    } 
-    
-    if (e.code === 'ArrowDown' && isCrouching && dino.y >= 195) {
+    } else if (e.code === 'ArrowDown' && !isCrouching && dino.y >= 195) {
         dino.isCrouching = true; // 엎드리기
         dino.height = 50; // 엎드린 높이로 줄이기
         dino.width = 70;
@@ -302,5 +297,9 @@ document.addEventListener('keyup', function (e) {
 });
 
 if (!gameStarted) {
-    drawStartScreen(); // 게임 시작 전 시작 화면 표시
+    gameStartScreen(); // 게임 시작 전 시작 화면 표시
+}
+
+if (gameOver) {
+    gameOverScreen(); // 게임 시작 전 시작 화면 표시
 }
