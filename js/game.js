@@ -205,7 +205,7 @@ function frame(){
         dino.y -= 10;
         jump_timer++;
 
-        if(jump_timer > 20){
+        if(jump_timer > 30){
             jump = false;
             jump_timer = 0;
         }
