@@ -150,8 +150,8 @@ function frame(){
     }
 
     // 배경 이동
-    backBgX -= 5; // x축으로 왼쪽 이동
-    frontBgX -= 6;
+    backBgX -= 4; // x축으로 왼쪽 이동
+    frontBgX -= 5;
     if (backBgX <= -canvas.width) { // 배경이 화면 끝까지 이동하면 초기화
         backBgX = 0;
     }
