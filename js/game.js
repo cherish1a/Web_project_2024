@@ -198,8 +198,8 @@ function frame(){
 
         //충돌 체크
         if(crash(dino, a)){
-            canvas.width = canvas.width;
             cancelAnimationFrame(animation);
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
             gameOver = true;
             gameOverScreen();
         };
@@ -278,7 +278,7 @@ document.addEventListener('mousedown', function () {
 
 
 document.addEventListener('keydown', function(e){
-    //dino.y === 200은 더블 점프 방지
+    //dino.y >= 199은 더블 점프 방지
     if((e.code === 'Space' || e.code === 'mousedown') && dino.y >= 199){
         jump = true;
     } 
