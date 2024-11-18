@@ -134,6 +134,7 @@ function startGame() {
 
 // 게임 종료 화면 그리기
 function gameOverScreen() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.drawImage(gameOverImage, 0, 0, canvas.width, canvas.height); 
 
     ctx.fillStyle = "white";
@@ -163,15 +164,13 @@ function frame(){
         frontBgX = 0;
     }
 
-    // 배경 그리기
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    // 배경 그리기
     ctx.drawImage(backBgImage, backBgX, 0, canvas.width, canvas.height); // 뒷 배경
     ctx.drawImage(backBgImage, backBgX + canvas.width, 0, canvas.width, canvas.height);
 
     ctx.drawImage(frontBgImage, frontBgX, 0, canvas.width, canvas.height); // 앞 배경
     ctx.drawImage(frontBgImage, frontBgX + canvas.width, 0, canvas.width, canvas.height); // 이어지는 배경
-
-
     
     if(timer >= nextObstacleTime){
         let randomType = Math.random(); // 랜덤 값
