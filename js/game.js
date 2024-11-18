@@ -277,19 +277,17 @@ document.addEventListener('keydown', function(e){
         jump = true;
     } 
     
-    if (e.code === 'ArrowDown') {
-        if (!dino.isCrouching && dino.y >= 195) {
-            dino.isCrouching = true; // 엎드리기
-            dino.height = 50; // 엎드린 높이로 줄이기
-            dino.width = 70;
-            dino.y=220;
-        }
+    if (e.code === 'ArrowDown' && isCrouching && dino.y >= 195) {
+        dino.isCrouching = true; // 엎드리기
+        dino.height = 50; // 엎드린 높이로 줄이기
+        dino.width = 70;
+        dino.y=220;
     }
 })
 
 // 좌클릭도 점프되게
 document.addEventListener('mousedown', function (e) {
-    if (e.button === 0 && dino.y >= 199) { 
+    if (e.button === 0 && dino.y >= 195) { 
         jump = true;
     }
 });
