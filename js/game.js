@@ -205,13 +205,13 @@ function frame(){
         dino.y -= 7;
         jump_timer++;
 
-        if(jump_timer > 30){
+        if(jump_timer > 10){
             jump = false;
             jump_timer = 0;
         }
 
     } else {
-        if(dino.y < 200) {
+        if(dino.y < 300) {
             dino.y += 7;
         }
     }
