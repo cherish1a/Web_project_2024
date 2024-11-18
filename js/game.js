@@ -201,17 +201,18 @@ function frame(){
 
 
     //점프 
-    if (jump) {
-        dino.y -= 7; // 점프 시 위로 이동
+    if(jump) {
+        dino.y -= 8; // 점프 시 위로 이동
         jumpTimer++; 
 
-        if (jumpTimer > 20) {
+        if(jumpTimer > 18) {
             jump = false; 
             jumpTimer = 0; 
         }
+        
     } else { 
-        if (dino.y < 200) {
-            dino.y += 7; 
+        if(dino.y < 200) {
+            dino.y += 8; 
         } 
     }
 
@@ -270,7 +271,7 @@ document.addEventListener('mousedown', function () {
 
 document.addEventListener('keydown', function(e){
     //dino.y >= 195은 더블 점프 방지
-    if(e.code === 'Space' && dino.y >= 190 && !jump){
+    if(e.code === 'Space' && dino.y >= 190 && !jump && !dino.isCrouching){
         jump = true;
     } 
     
@@ -286,7 +287,7 @@ document.addEventListener('keydown', function(e){
 
 // 좌클릭도 점프되게
 document.addEventListener('mousedown', function (e) {
-    if (e.button === 0 && dino.y >= 190  && !jump) { 
+    if (e.button === 0 && dino.y >= 190  && !jump && !dino.isCrouching) { 
         jump = true;
     }
 });
