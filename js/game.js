@@ -150,8 +150,8 @@ function frame(){
     }
 
     // 배경 이동
-    backBgX -= 3; // x축으로 왼쪽 이동
-    frontBgX -= 4;
+    backBgX -= 5; // x축으로 왼쪽 이동
+    frontBgX -= 6;
     if (backBgX <= -canvas.width) { // 배경이 화면 끝까지 이동하면 초기화
         backBgX = 0;
     }
@@ -224,12 +224,17 @@ function frame(){
     ctx.font = "20px bitbit";
     ctx.fillText("Score: " + score, 10, 30);
 
-      // 장애물 속도 증가 (점수가 100의 배수일 때마다 속도 증가)
+      // 장애물 속도 증가
     if (score % 100 === 0 && score > 0) {
         cactusSpeed += 0.2;
     }
 
     dino.draw();
+
+    //게임 종료 화면 표시
+    if (gameOver) {
+    gameOverScreen();
+    }
 }
 
 //충돌 확인
@@ -272,7 +277,8 @@ document.addEventListener('keydown', function(e){
     //dino.y >= 195은 더블 점프 방지
     if((e.code === 'Space' || e.code === 'mousedown') && dino.y >= 195){
         jump = true;
-    } else if (e.code === 'ArrowDown' && !isCrouching && dino.y >= 195) {
+    } 
+    if (e.code === 'ArrowDown' && !jump && isCrouching && dino.y >= 195) {
         dino.isCrouching = true; // 엎드리기
         dino.height = 50; // 엎드린 높이로 줄이기
         dino.width = 70;
@@ -298,8 +304,4 @@ document.addEventListener('keyup', function (e) {
 
 if (!gameStarted) {
     gameStartScreen(); // 게임 시작 전 시작 화면 표시
-}
-
-if (gameOver) {
-    gameOverScreen(); // 게임 시작 전 시작 화면 표시
 }
