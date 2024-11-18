@@ -233,7 +233,7 @@ function frame(){
 
     //게임 종료 화면 표시
     if (gameOver) {
-    gameOverScreen();
+        gameOverScreen();
     }
 }
 
@@ -278,11 +278,13 @@ document.addEventListener('keydown', function(e){
     if((e.code === 'Space' || e.code === 'mousedown') && dino.y >= 195){
         jump = true;
     } 
-    if (e.code === 'ArrowDown' && !jump && isCrouching && dino.y >= 195) {
-        dino.isCrouching = true; // 엎드리기
-        dino.height = 50; // 엎드린 높이로 줄이기
-        dino.width = 70;
-        dino.y=220;
+    if (e.code === 'ArrowDown') {
+        if(!jump && !isCrouching && dino.y >= 195){
+            dino.isCrouching = true; // 엎드리기
+            dino.height = 50; // 엎드린 높이로 줄이기
+            dino.width = 70;
+            dino.y=220;
+        }
     }
 })
 
