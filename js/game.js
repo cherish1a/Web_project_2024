@@ -190,15 +190,15 @@ function frame(){
         }
         a.x-=cactusSpeed;
 
+        a.draw();
+
         //충돌 체크
         if(crash(dino, a)){
             cancelAnimationFrame(animation);
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             gameOver = true;
             gameOverScreen();
-        };
-
-        a.draw();
+        }
     })
 
 
