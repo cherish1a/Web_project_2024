@@ -203,11 +203,11 @@ function frame(){
     //점프 
     if(jump) {
         dino.y -= 7; 
-        jumpTimer++; 
+        jump_timer++; 
 
-        if(jumpTimer > 18) {
+        if(jump_timer > 15) {
             jump = false; 
-            jumpTimer = 0; 
+            jump_timer = 0; 
         }
     } else { 
         if(dino.y < 200) {
