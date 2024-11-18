@@ -204,6 +204,12 @@ function frame(){
     if (jump) {
         dino.y -= 7; // 점프 시 위로 이동
         jumpTimer++; 
+
+        if (jumpTimer > 20) {
+            jump = false; 
+            jumpTimer = 0; 
+        }
+    }
     } else { 
         if (dino.y < 200) {
             dino.y += 6; //밑으로 떨어짐
