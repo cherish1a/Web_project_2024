@@ -1,7 +1,7 @@
 let canvas = document.getElementById('canvas');
 let ctx = canvas.getContext('2d');
 
-//게임오버 이미지지
+//게임오버 이미지
 let gameOverImage = new Image();
 gameOverImage.src = './media/game/over.png';
 
@@ -164,6 +164,7 @@ function frame(){
     }
 
     // 배경 그리기
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.drawImage(backBgImage, backBgX, 0, canvas.width, canvas.height); // 뒷 배경
     ctx.drawImage(backBgImage, backBgX + canvas.width, 0, canvas.width, canvas.height);
 
@@ -197,7 +198,7 @@ function frame(){
 
         //충돌 체크
         if(crash(dino, a)){
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            canvas.width = canvas.width;
             cancelAnimationFrame(animation);
             gameOver = true;
             gameOverScreen();
