@@ -202,16 +202,16 @@ function frame(){
 
     //점프 
     if(jump) {
-        dino.y -= 20; 
+        dino.y -= 10; 
         jump_timer++; 
 
-        if(jump_timer > 16) {
+        if(jump_timer > 18) {
             jump = false; 
             jump_timer = 0; 
         }
     } else { 
         if(dino.y < 200) {
-            dino.y += 20; 
+            dino.y += 13; 
         } 
     }
 
