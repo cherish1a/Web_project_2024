@@ -272,13 +272,13 @@ document.addEventListener('mousedown', function () {
 
 
 document.addEventListener('keydown', function(e){
-    //dino.y >= 199은 더블 점프 방지
-    if((e.code === 'Space' || e.code === 'mousedown') && dino.y >= 199){
+    //dino.y >= 195은 더블 점프 방지
+    if((e.code === 'Space' || e.code === 'mousedown') && dino.y >= 195){
         jump = true;
     } 
     
     if (e.code === 'ArrowDown') {
-        if (!dino.isCrouching && dino.y >= 199) {
+        if (!dino.isCrouching && dino.y >= 195) {
             dino.isCrouching = true; // 엎드리기
             dino.height = 50; // 엎드린 높이로 줄이기
             dino.width = 70;
@@ -295,7 +295,7 @@ document.addEventListener('mousedown', function (e) {
 });
 
 document.addEventListener('keyup', function (e) {
-    if (e.code === 'ArrowDown' &&  dino.y >= 219) {
+    if (e.code === 'ArrowDown' &&  dino.y >= 215) {
         dino.isCrouching = false; // 엎드린 상태 해제
         dino.height = 60; // 기본 높이로 복구
         dino.width = 50;
