@@ -205,16 +205,14 @@ function frame(){
         dino.y -= 7;
         jump_timer++;
 
-        if(jump_timer > 25){
+        if(jump_timer > 20){
             jump = false;
             jump_timer = 0;
         }
 
     } else {
         if(dino.y < 200) {
-            dino.y += 5;
-        } else {
-            dino.y = 200;
+            dino.y += 6;
         }
     }
 
