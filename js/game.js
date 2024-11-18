@@ -202,10 +202,10 @@ function frame(){
 
     //점프 기능
     if(jump){
-        dino.y -= 7;
+        dino.y -= 6;
         jump_timer++;
 
-        if(jump_timer > 20){
+        if(jump_timer > 25){
             jump = false;
             jump_timer = 0;
         }
@@ -271,12 +271,12 @@ document.addEventListener('mousedown', function () {
 
 document.addEventListener('keydown', function(e){
     //dino.y >= 195은 더블 점프 방지
-    if(e.code === 'Space' && dino.y >= 195 && !jump){
+    if(e.code === 'Space' && dino.y >= 190 && !jump){
         jump = true;
     } 
     
     if (e.code === 'ArrowDown') {
-        if(!jump && !dino.isCrouching && dino.y >= 195){
+        if(!jump && !dino.isCrouching && dino.y >= 190){
             dino.isCrouching = true; // 엎드리기
             dino.height = 50; // 엎드린 높이로 줄이기
             dino.width = 70;
@@ -287,13 +287,13 @@ document.addEventListener('keydown', function(e){
 
 // 좌클릭도 점프되게
 document.addEventListener('mousedown', function (e) {
-    if (e.button === 0 && dino.y >= 195  && !jump) { 
+    if (e.button === 0 && dino.y >= 190  && !jump) { 
         jump = true;
     }
 });
 
 document.addEventListener('keyup', function (e) {
-    if (e.code === 'ArrowDown' &&  dino.y >= 215) {
+    if (e.code === 'ArrowDown' &&  dino.y >= 210) {
         dino.isCrouching = false; // 엎드린 상태 해제
         dino.height = 60; // 기본 높이로 복구
         dino.width = 50;
