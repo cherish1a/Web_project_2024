@@ -219,10 +219,12 @@ function frame(){
     if(timer%10 === 0){
         score++;
     }
-
-    ctx.fillStyle = "purple";
-    ctx.font = "20px bitbit";
-    ctx.fillText("Score: " + score, 10, 30);
+    
+    if(!gameOver){
+        ctx.fillStyle = "purple";
+        ctx.font = "20px bitbit";
+        ctx.fillText("Score: " + score, 10, 30);
+    }
 
       // 장애물 속도 증가
     if (score % 100 === 0 && score > 0) {
