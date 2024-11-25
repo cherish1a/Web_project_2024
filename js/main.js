@@ -12,9 +12,9 @@ $(document).ready(function () {
   //배너 3초마다 바뀌게 하기
   // 배너 이미지 배열
   const banners = [
-    "./media/banner1.png",
-    "./media/banner2.png",
-    "./media/banner3.png"
+    "media/banner1.png",
+    "media/banner2.png",
+    "media/banner3.png"
   ];
   let i = 0;
 
