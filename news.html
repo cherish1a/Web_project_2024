@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Muto C</title>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+  <!--로딩-->
+  <div class="loader">
+    <img id="loadingImg" src="./media/logo-character.png" alt="Character">
+  </div>
+
+  <div class="container" style="display:none;">
+    <header>
+      <div class="logo">Muto C</div>
+
+      <nav class="menu">
+        <ul>
+          <li><a href="./html/index.html">메인</a></li>
+          <li><a href="./html/explain.html">회사 소개</a></li>
+          <li><a href="./html/game.html">플레이</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+      <article>
+        <img class="banner" src="./media/news.png"></img>
+      </article>
+    </section>
+
+    <section>
+      <article style="flex:1">  
+        <div id="count">
+          <h1>2025년 1월 1일까지</h1>
+          <p id="clock">00일 00시간 00분 00초</p>
+        </div>
+      </article>
+
+      <article style="flex:1">
+        <div id="twitter_wrap">
+          <h1>새 게시글 보기</h1>
+          <a class="twitter-timeline" 
+          data-lang="ko" 
+          data-width="400" 
+          data-height="300" 
+          data-theme="dark" 
+          href="https://twitter.com/XDevelopers?ref_src=twsrc%5Etfw">
+          Tweets by XDevelopers
+          </a> 
+        </div>
+      </article>
+    </section>
+
+    <footer>
+      <br><br>
+    </footer>
+  </div>
+</body>
+
+  <!--트위터 위젯 불러오기 위함-->
+  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+  <!--시계 -->
+  <script src="./js/news.js"></script>
+  <!--로딩-->
+  <script src="./js/load.js"></script>
+
+</html>
