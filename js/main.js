@@ -23,7 +23,7 @@ $(document).ready(function () {
     const banner = $(".banner");
     i = (i + 1) % banners.length; 
     //변경
-    banner.src = banners[i];
+    banner.setAttribute("src", banners[i]);
   }
 
   // 3초마다 배너 변경
