@@ -2,31 +2,45 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Muto</title>
+  <title>Muto C</title>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
   <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/main.css">
 </head>
+
 <body>
+  <!-- 처음 화면 -->
+  <div id="intro-overlay">
+    <img src="./media/logo-character.png" alt="Welcome">
+  </div>
+
+  <!--로딩-->
+  <div class="loader">
+    <img id="loadingImg" src="./media/logo-character.png" alt="Character">
+  </div>
+
+  <!--헤더-->
   <header>
     <div class="logo">Muto C</div>
 
     <nav class="menu">
       <ul>
-        <li><a href="./explain.html">회사 소개</a></li>
-        <li><a href="./news.html">소식</a></li>
-        <li><a href="./game.html">플레이</a></li>
+        <li><a href="./html/explain.html">회사 소개</a></li>
+        <li><a href="./html/news.html">소식</a></li>
+        <li><a href="./html/game.html">플레이</a></li>
       </ul>
     </nav>
   </header>
 
   <section>
     <article>
-      <img id="banner" src="./media/banner1.png"></img>
+      <img class="banner" src="./media/banner1.png" alt="배너"></img>
     </article>
   </section>
 
   <section>
     <article>
-      <img id="intro" src="./media/intro2.png">
+      <img class="intro" src="./media/intro2.png">
       <h1>When in doubt, choose change.</h1>
       <p>
         내용내용내용내용내용내용내용내용내용내용<br>
@@ -38,7 +52,7 @@
 
   <section>
     <article>
-      <img id="intro" src="./media/npc.png">
+      <img class="intro" src="./media/npc.png">
       <img id="npc" src="./media/mutoNpc.png" onclick="rotate()">
       <h1>< 캐릭터 이름 ></h1>
       <p>
@@ -51,11 +65,11 @@
 
   <section>
     <article>
-      <img id="intro" src="./media/contact.png">
+      <img class="intro" src="./media/contact.png">
       <h1>주소, 전화번호, 기타</h1>
-      <p> 주소 | 내용내용내용내용내용내용내용<br><br>
-        전화번호 | 내용내용내용내용내용내용<br><br>
-        기타 | 내용내용내용내용내용내용내용</p>
+      <p> 주소 | 내용내용내용내용내용<br><br>
+        전화번호 | 내용내용내용내용내용<br><br>
+        기타 | 내용내용내용내용내용내용</p>
     </article>
   </section>
 
@@ -63,14 +77,11 @@
     <br><br>
   </footer>
 
-  <script>
-    let deg = 0;
-    let image = document.getElementById("npc");
-
-    function rotate() {
-      deg = deg + 360; 
-      image.style.transform = "rotate(" + deg + "deg)";
-    } 
-  </script>
 </body>
+  
+  <!--화면에 캐릭터 등장 및 배너-->
+  <script src="./js/main.js"></script>
+  <!--로딩-->
+  <script src="./js/load.js"></script>
+
 </html>
