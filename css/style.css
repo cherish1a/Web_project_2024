@@ -4,10 +4,37 @@
     url('https://cdn.df.nexon.com/img/common/font/DNFBitBit-Regular.woff2');
 }
 
+.loader {
+    /*가운데에 뜨게*/
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 1;
+    margin: -75px 0 0 -75px;
+
+    /*border*/
+    border: 16px solid #ffffffab;
+    border-radius: 50%;
+    border-top: 16px solid #f589ff;
+
+    /*원*/
+    width: 120px;
+    height: 120px;
+
+    /*애니*/
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
 body {
     font-family:'bitbit';
     color: #f589ff;
     background-color: #282828;
+    align-items: center;    
 }
 
 header {
@@ -22,8 +49,12 @@ header {
     height: 75px;
 
     display: flex;
-    align-items: center;
     justify-content: space-between;
+}
+
+section {
+    display: flex;
+    justify-content: center;  
 }
 
 li {
@@ -42,14 +73,13 @@ a {
     font-size: 40px;
 }
 
-#banner {
-    display: block;
-    margin: 0 auto;        
+.banner {
+    display: block;  
     width: 100%;        
     height: 100%;
 }
 
-#intro {
+.intro {
     display: block;
     margin: 0 auto;
     width: 60%;
@@ -83,5 +113,3 @@ footer {
     text-align: center;   
     margin: 50px 0; 
 }
-
-#npc { transition: transform 1s; }
