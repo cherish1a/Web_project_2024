@@ -1,0 +1,31 @@
+#npc {
+    transition: transform 1s; 
+}
+
+#intro-overlay img {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 9999;
+    margin: -75px 0 -75px; /*f5눌러서 로딩됐을 때도 가운데에 뜨게*/
+    animation: zoomInOut 2s ease forwards;
+}
+
+@keyframes zoomInOut {
+    0% {
+        transform: scale(2.5);
+        opacity: 0;
+    }
+    25% {
+        transform: scale(5);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(2.5);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(0);
+        opacity: 0; 
+    }
+}
