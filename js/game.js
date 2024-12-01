@@ -20,9 +20,25 @@ var dino = {
     speed: 5,
     isCrouching:false,
     walkFrame: 0,
+    //아이템
+    isShield: false,
+    shieldTime: 0, //쉴드 지속 시간
     draw(){
         if (this.isCrouching) {
             ctx.drawImage(dinoDownImg, this.x, this.y); // 엎드림
+        } else if(this.isShield) {
+            ctx.shadowBlur = 20;
+            ctx.shadowColor = "yellow";
+            if(jump == true) {
+                ctx.drawImage(dinoJumpImg, this.x, this.y); // 점프
+            } else {
+                if (this.walkFrame === 0) { //기본
+                    ctx.drawImage(dinoImg, this.x, this.y); 
+                } else {
+                    ctx.drawImage(dino2Img, this.x, this.y);
+                }
+            } 
+            ctx.shadowBlur = 0;
         } else if(jump == true) {
             ctx.drawImage(dinoJumpImg, this.x, this.y); // 점프
         } else {
@@ -89,6 +105,25 @@ class Bird extends Obstacle {
     }
 }
 
+//아이템 이미지
+let itemImg = new Image();
+itemImg.src = '../media/game/shield.png';
+
+//아이템 
+class Item {
+    constructor(speed) {
+        this.x = 1000;
+        this.y = 215;
+        this.speed = speed;
+        this.width = 20; 
+        this.height = 20; 
+        this.image = itemImg;
+    }
+    
+    draw() {
+        ctx.drawImage(this.image, this.x, this.y, this.width, this.height); 
+    }
+}
 
 // 배경 이미지 설정
 let frontBgImage = new Image(); // 앞 배경
@@ -104,16 +139,21 @@ let backBgX = 0;
 //변수 정리
 let score = 0;
 let timer = 0;
+//점프
 let jump = false;
 let jump_timer = 0;
+//장애물
 let cactus_arr = [];
 let cactusSpeed = 5;
-let animation;
-let gameStarted = false; // 게임 시작 여부
-let gameOver = false; //게임 끝 여부
-
 let nextObstacleTime = Math.floor(Math.random() * 200) + 20;
+//아이템
+let shieldItem;
+let nextShieldTime = Math.floor(Math.random() * 600) + 1800;
+//게임 시작, 끝 여부
+let gameStarted = false; 
+let gameOver = false; 
 
+let animation;
 // 게임 시작 화면 그리기
 function gameStartScreen() {
     ctx.fillStyle = "white";
@@ -183,6 +223,37 @@ function frame(){
         nextObstacleTime = timer + Math.floor(Math.random() * 200) + 30; 
     }
 
+    //아이템
+    if(timer >= nextShieldTime && score >= 300){
+        shieldItem = new Item(cactusSpeed);
+        nextShieldTime = timer + Math.floor(Math.random() * 600) + 1800; 
+    }
+
+    if(shieldItem) {
+       shieldItem.x -= cactusSpeed;
+
+       if(crash(dino, shieldItem)){
+            dino.isShield = true; 
+            dino.shieldTime = 300; 
+            shieldItem = null; //아이템 제거
+       }
+
+       //화면 밖으로 나가도 제거
+       if(shieldItem && shieldItem.x < 0){
+            shieldItem = null; //아이템 제거
+       }
+
+       if(!gameOver) shieldItem.draw();
+    }
+
+    if(dino.isShield){
+        dino.shieldTime--;
+        if(dino.shieldTime <= 0){
+            dino.isShield = false;
+            dino.shieldTime = 0;
+        }
+    }
+
     cactus_arr.forEach((a, i, arr)=>{
         //x 좌표가 0 미만이면 제거
         if(a.x < 0) {
@@ -211,7 +282,7 @@ function frame(){
         }
     } else { 
         if(dino.y < 200) {
-            dino.y += 8; 
+            dino.y += 7; 
         } 
     }
 
@@ -262,6 +333,9 @@ document.addEventListener('mousedown', function () {
         jump_timer = 0;
         cactus_arr = [];
         cactusSpeed = 5;
+        dino.isShield = false;
+        dino.shieldTime = 0;
+        nextShieldTime = Math.floor(Math.random() * 600) + 1800;
         gameStarted = false; 
         gameOver = false;
         //게임 오버 후 재시작
