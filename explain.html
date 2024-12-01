@@ -5,6 +5,7 @@
   <title>Muto</title>
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
   <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/explain.css">
 </head>
 <body>
   <!--로딩-->
@@ -16,7 +17,7 @@
   <header>
     <div class="logo">Muto C</div>
 
-    <nav class="menu">
+    <nav id="menu">
       <ul>
         <li><a href="./index.html">메인</a></li>
         <li><a href="./news.html">소식</a></li>
@@ -24,31 +25,55 @@
       </ul>
     </nav>
   </header>
-
+  
+  <!--섹션 및 아티클-->
   <section>
     <article>
-      <img id="banner" src="./media/explain.png"></img>
+      <img class="banner" src="./media/explain.png"></img>
     </article>
   </section>
 
   <section>
     <article>
-      <img id="intro" src="./media/explain_three.png">
-      <img id="intro" src="./media/v1.png">
-      <h1>내용1</h1>
-      <img id="intro" src="./media/v2.png">
-      <h1>내용2</h1>
-      <img id="intro" src="./media/v3.png">
-      <h1>내용3</h1>
+      <img class="intro" src="./media/explain_three.png">
+      <div class ="card_wrap">
+        <img class="card" src="./media/v1.png">
+        <h1 class="cardText">내용1</h1>
+        <img class="card" src="./media/v2.png">
+        <h1 class="cardText">내용2</h1>
+        <img class="card" src="./media/v3.png">
+        <h1 class="cardText">내용3</h1>
+      </div>
     </article>
   </section>
 
+  <!--footer-->
   <footer>
-    <br><br>
+    <div id="bottomMenu">
+      <ul>
+        <li><a href="#">회사 소개</a></li>
+        <li><a href="#">개인정보처리방침</a></li>
+        <li><a href="#">회사 위치</a></li>
+      </ul>
+      <div id="sns">
+        <ul>
+          <li><a href="#"><img src="../media/sns1.png"></a></li>
+          <li><a href="#"><img src="../media/sns2.png"></a></li>
+          <li><a href="#"><img src="../media/sns3.png"></a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="company">
+      <p>***도 ***동 ***로 *** (전화) 123-456-7890</p>
+    </div> 
   </footer>
 </body>
   
   <!--로딩-->
 <script src="./js/load.js"></script>
+
+  <!--카드 슬라이드-->
+<script src="./js/explain.js"></script>
   
 </html>
