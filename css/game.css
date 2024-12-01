@@ -12,3 +12,8 @@ canvas {
     justify-content: center;
     align-items: center;
 }
+
+#game_explain {
+    width: 50%;
+    height: auto;
+}
