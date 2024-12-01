@@ -231,6 +231,7 @@ function frame(){
 
     if(shieldItem) {
        shieldItem.x -= cactusSpeed;
+        if(!gameOver) shieldItem.draw();
 
        if(crash(dino, shieldItem)){
             dino.isShield = true; 
@@ -242,8 +243,6 @@ function frame(){
        if(shieldItem && shieldItem.x < 0){
             shieldItem = null; //아이템 제거
        }
-
-       if(!gameOver) shieldItem.draw();
     }
 
     if(dino.isShield){
