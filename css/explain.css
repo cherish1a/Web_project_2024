@@ -1,0 +1,26 @@
+.card_wrap {
+    overflow: hidden;
+}
+
+.card {
+    width: 50%;
+    height: auto;
+
+    opacity: 0;
+    transition: all 1s;
+}
+
+.card.active {
+    opacity: 1;
+    transform: translate(0, -20px);
+}
+
+.cardText {
+    opacity: 0;
+    transition: all 1s;
+}
+
+.cardText.active {
+    opacity: 1;
+    transform: translate(0, -20px);
+}
