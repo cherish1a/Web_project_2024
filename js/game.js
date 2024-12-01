@@ -261,7 +261,7 @@ function frame(){
         }
         a.x-=cactusSpeed;
 
-        if (!gameOver && crash(dino, a)) {
+        if (!dino.isShield && !gameOver && crash(dino, a)) {
             cancelAnimationFrame(animation);
             gameOver = true; // 게임 종료
             gameOverScreen();
