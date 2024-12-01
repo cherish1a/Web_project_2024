@@ -19,3 +19,15 @@ function updateClock(){
 
 //1초마다 업데이트
 setInterval(updateClock, 1000);
+
+//버튼 글씨 바꾸기
+$(document).ready(function() {
+  $("#band_btn").hover(
+    function() {
+      $(this).text("GO !");
+    },
+    function() {
+      $(this).text("BAND");
+    }
+  );
+});
