@@ -107,7 +107,7 @@ class Bird extends Obstacle {
 
 //아이템 이미지
 let itemImg = new Image();
-itemImg.src = '../media/game/shield.png';
+itemImg.src = './media/game/shield.png';
 
 //아이템 
 class Item {
