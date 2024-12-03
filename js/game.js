@@ -152,6 +152,21 @@ let nextShieldTime = Math.floor(Math.random() * 600) + 1800;
 //게임 시작, 끝 여부
 let gameStarted = false; 
 let gameOver = false; 
+//효과음
+// 효과음 로드
+let backBgSound = new Audio('./media/game/sounds/025270_pixel-song-4-72676.mp3');
+let jumpSound = new Audio('./media/game/sounds/retro-jump-3-236683.mp3');
+let shieldSound = new Audio('./media/game/sounds/retro-coin-4-236671.mp3');
+let gameOverSound = new Audio('./media/game/sounds/retro-hurt-1-236672.mp3');
+
+//음량 조절
+jumpSound.volume = 0.01;
+shieldSound.volume = 0.05;
+gameOverSound.volume = 0.05;
+backBgSound.volume = 0.1;
+
+//배경음악 반복
+backBgSound.loop = true; 
 
 let animation;
 // 게임 시작 화면 그리기
@@ -165,11 +180,15 @@ function gameStartScreen() {
 function startGame() {
     gameStarted = true;
     startScreenDisplayed = false;
+    backBgSound.play();
     frame(); // 게임 루프 시작
 }
 
 // 게임 종료 화면 그리기
 function gameOverScreen() {
+    backBgSound.pause(); // 배경음악 중지
+    backBgSound.currentTime = 0; // 음악 처음으로 되돌림
+    
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     ctx.fillStyle = "white";
@@ -261,6 +280,7 @@ function frame(){
         a.x-=cactusSpeed;
 
         if (!dino.isShield && !gameOver && crash(dino, a)) {
+            gameOverSound.play();
             cancelAnimationFrame(animation);
             gameOver = true; // 게임 종료
             gameOverScreen();
@@ -337,6 +357,8 @@ document.addEventListener('mousedown', function () {
         nextShieldTime = Math.floor(Math.random() * 600) + 1800;
         gameStarted = false; 
         gameOver = false;
+        //배경음악 다시 재생
+        backBgSound.play(); 
         //게임 오버 후 재시작
         startGame(); 
     }
@@ -347,6 +369,7 @@ document.addEventListener('keydown', function(e){
     //dino.y >= 195은 더블 점프 방지
     if(e.code === 'Space' && dino.y >= 190 && !jump &&  (dino.isCrouching===false)){
         jump = true;
+        jumpSound.play();
     } 
     
     if (e.code === 'ArrowDown') {
@@ -363,6 +386,7 @@ document.addEventListener('keydown', function(e){
 document.addEventListener('mousedown', function (e) {
     if (e.button === 0 && dino.y >= 190  && !jump && (dino.isCrouching===false)) { 
         jump = true;
+        jumpSound.play();
     }
 });
 
