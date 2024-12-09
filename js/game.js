@@ -12,7 +12,7 @@ let dinoJumpImg = new Image();
 dinoJumpImg.src = './media/game/dino_jump.png';
 
 //공룡
-var dino = {
+let dino = {
     x : 100,
     y : 200,
     width : 60,
@@ -24,21 +24,15 @@ var dino = {
     isShield: false,
     shieldTime: 0, //쉴드 지속 시간
     draw(){
-        if (this.isCrouching) {
-            ctx.drawImage(dinoDownImg, this.x, this.y); // 엎드림
-        } else if(this.isShield) {
+        if (this.isShield) {
             ctx.shadowBlur = 20;
             ctx.shadowColor = "yellow";
-            if(jump == true) {
-                ctx.drawImage(dinoJumpImg, this.x, this.y); // 점프
-            } else {
-                if (this.walkFrame === 0) { //기본
-                    ctx.drawImage(dinoImg, this.x, this.y); 
-                } else {
-                    ctx.drawImage(dino2Img, this.x, this.y);
-                }
-            } 
+        } else {
             ctx.shadowBlur = 0;
+        }
+        
+        if (this.isCrouching) {
+            ctx.drawImage(dinoDownImg, this.x, this.y); // 엎드림
         } else if(jump == true) {
             ctx.drawImage(dinoJumpImg, this.x, this.y); // 점프
         } else {
@@ -47,6 +41,10 @@ var dino = {
             } else {
                 ctx.drawImage(dino2Img, this.x, this.y);
             }
+        }
+          //효과가 캐릭터에게만 적용되게
+        if (this.isShield) {
+            ctx.shadowBlur = 0; 
         }
     }
 }
@@ -142,6 +140,9 @@ let timer = 0;
 //점프
 let jump = false;
 let jump_timer = 0;
+let jump_speed = 12;
+let gravity = 0.5;
+let crouchRequested = false;
 //장애물
 let cactus_arr = [];
 let cactusSpeed = 5;
@@ -292,16 +293,25 @@ function frame(){
 
     //점프 
     if(jump) {
-        dino.y -= 7; 
-        jump_timer++; 
+        dino.y -= jump_speed;
+        jump_speed -= gravity;  
 
-        if(jump_timer > 20) {
+        if(jump_speed <= 0) {
             jump = false; 
-            jump_timer = 0; 
+            jump_speed = 12;
         }
     } else { 
         if(dino.y < 200) {
-            dino.y += 7; 
+            dino.y += (8 + gravity);
+            dino.y = Math.min(200, dino.y); //더 아래로 내려가는 경우가 있어 고정.
+
+            if (crouchRequested && !jump && !dino.isCrouching && dino.y >= 190) {
+                dino.isCrouching = true;
+                dino.height = 50; // 엎드린 높이
+                dino.width = 70;
+                dino.y = 220;
+                crouchRequested = false; // 엎드리기 요청 초기화
+            }
         } 
     }
 
@@ -350,6 +360,7 @@ document.addEventListener('mousedown', function () {
         nextObstacleTime = Math.floor(Math.random() * 200) + 30;
         jump = false;
         jump_timer = 0;
+        jump_speed = 12;
         cactus_arr = [];
         cactusSpeed = 5;
         dino.isShield = false;
@@ -367,26 +378,40 @@ document.addEventListener('mousedown', function () {
 
 document.addEventListener('keydown', function(e){
     //dino.y >= 195은 더블 점프 방지
-    if(e.code === 'Space' && dino.y >= 190 && !jump &&  (dino.isCrouching===false)){
-        jump = true;
-        jumpSound.play();
-    } 
+    if(e.code==='Space'){
+        e.preventDefault(); // 기본 동작(스크롤) 방지
+        if(dino.y >= 190 && !jump &&  (dino.isCrouching===false)){
+            jump = true;
+            jumpSound.play();
+        }
+    }
     
     if (e.code === 'ArrowDown') {
+        e.preventDefault(); // 기본 동작(스크롤) 방지
         if(!jump && (dino.isCrouching===false) && dino.y >= 190){
             dino.isCrouching = true; // 엎드리기
             dino.height = 50; // 엎드린 높이로 줄이기
             dino.width = 70;
             dino.y=220;
+        } else if (dino.y < 200) {
+            crouchRequested = true; // 점프 중 착지 후 엎드리기 요청
         }
     }
 })
 
 // 좌클릭도 점프되게
 document.addEventListener('mousedown', function (e) {
-    if (e.button === 0 && dino.y >= 190  && !jump && (dino.isCrouching===false)) { 
-        jump = true;
-        jumpSound.play();
+    // 클릭 위치가 캔버스 안에 있는지 확인
+    let canvasRect = canvas.getBoundingClientRect(); // 캔버스의 실제 화면 내 위치
+    let mouseX = e.clientX - canvasRect.left; // 마우스 클릭 위치 (캔버스 좌측 상단 기준)
+    let mouseY = e.clientY - canvasRect.top; // 마우스 클릭 위치 (캔버스 상단 기준)
+
+    // 클릭이 게임 화면 안에서 발생하면 점프
+    if (mouseX >= 0 && mouseX <= canvasRect.width && mouseY >= 0 && mouseY <= canvasRect.height) {
+        if (e.button === 0 && dino.y >= 190  && !jump && (dino.isCrouching===false)) { 
+            jump = true;
+            jumpSound.play();
+        }
     }
 });
 
@@ -396,6 +421,54 @@ document.addEventListener('keyup', function (e) {
         dino.height = 60; // 기본 높이로 복구
         dino.width = 50;
         dino.y=200;
+    }
+});
+
+// 버튼 클릭 시 점프, 엎드리기 처리
+document.getElementById('jump_btn').addEventListener('click', function() {
+    if (dino.y >= 190 && !jump &&  (dino.isCrouching===false)) {
+        jump = true;
+        jumpSound.play();
+    }
+});
+
+document.getElementById('crouch_btn').addEventListener('mousedown', function() {
+    if (!jump && (dino.isCrouching===false) && dino.y >= 190) {
+        dino.isCrouching = true;
+        dino.height = 50;
+        dino.width = 70;
+        dino.y = 220;
+    }
+});
+
+document.getElementById('crouch_btn').addEventListener('mouseup', function() {
+    if (dino.isCrouching && dino.y >= 200) {
+        dino.isCrouching = false; // 엎드린 상태 해제
+        dino.height = 60; // 기본 높이로 복구
+        dino.width = 50;
+        dino.y= 200;
+    }
+});
+
+//음소거
+let isMuted = false;
+
+document.getElementById('mute_btn').addEventListener('click', function () {
+    isMuted = !isMuted;
+    if (isMuted) {
+        backBgSound.muted = true;
+        jumpSound.muted = true;
+        shieldSound.muted = true;
+        gameOverSound.muted = true;
+        backBgSound.muted = true;
+        this.textContent = "🔇 Unmute";
+    } else {
+        backBgSound.muted = false;
+        jumpSound.muted = false;
+        shieldSound.muted = false;
+        gameOverSound.muted = false;
+        backBgSound.muted = false;
+        this.textContent = "🔊 Mute";
     }
 });
 
