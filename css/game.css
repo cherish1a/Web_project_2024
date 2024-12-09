@@ -55,3 +55,10 @@ canvas {
 #canvas {
     height: auto;
 }
+
+/*게임 화면 위치*/
+.game_inner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
