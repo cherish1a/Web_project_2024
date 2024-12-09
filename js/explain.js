@@ -29,4 +29,17 @@ $(document).ready(function() {
             }
         });
     }).scroll();
+
+    //누르면 흔들리게
+    $(".card").on("click", function () {
+        const $this = $(this);
+
+        // 흔드는 애니메이션
+        $this
+            .css("position", "relative")
+            .animate({ top: "-200px" }, 150) // 위로
+            .animate({ top: "200px" }, 150) // 아래로
+            .animate({ top: "-200px" }, 150) // 위로
+            .animate({ top: "0px" }, 150); // 원래 위치
+    });
 });
