@@ -1,0 +1,249 @@
+/* 기본 스타일 */
+body {
+    margin: 0;
+    font-family: bitbit;
+}
+
+/* 기본 폰트 크기 설정 */
+h1 {
+    font-size: 45px;
+}
+
+p {
+    font-size: 40px;
+}
+/*로고*/
+.logo {
+    font-size: 40px;
+}
+/*상단*/
+#menu ul li {
+    font-size: 27px;
+}
+/*하단*/
+#bottomMenu ul li a, #bottomMenu ul li a:visited {
+    font-size: 20px;
+}
+#company p {
+    font-size: 15px;
+}
+#sns img {
+    width: 50%;
+}
+/*사진*/
+.intro {
+    width: 50%;
+}
+#npc {
+    height: auto;  
+}
+/*게임버튼*/
+#control-buttons {
+    display: none;  /* 기본적으로 숨김 */
+}
+
+/* 1366px 이상의 너비 */
+@media only screen and (min-width: 1366px) {
+    h1 {
+        font-size: 45px;
+    }
+    p {
+        font-size: 40px;
+    }
+    /*상단*/
+    #menu ul li {
+        font-size: 27px;
+    }
+    /*하단*/
+    #bottomMenu ul li a, #bottomMenu ul li a:visited {
+        font-size: 20px;
+    }
+    #company p {
+        font-size: 20px;
+    }
+    #sns img {
+        width: 50%;
+    }
+    /*로고*/
+    .logo {
+        font-size: 40px;
+    }
+    /*사진*/
+    .intro {
+        width: 50%;
+    }
+    /*게임 버튼*/
+    #control-buttons {
+        display: none; 
+    }
+}
+
+/* 1024px ~ 1365px */
+@media only screen and (min-width: 1024px) and (max-width: 1365px) {
+    h1 {
+        font-size: 40px;
+    }
+    p {
+        font-size: 35px;
+    }
+    /*상단*/
+    #menu ul li {
+        font-size: 27px;
+    }
+    /*하단*/
+    #bottomMenu ul li a, #bottomMenu ul li a:visited {
+        font-size: 20px;
+    }
+    #company p {
+        font-size: 20px;
+    }
+    #sns img {
+        width: 50%;
+    }
+    /*로고*/
+    .logo {
+        font-size: 35px;
+    }
+    /*사진*/
+    .intro {
+        width: 50%;
+    }
+    /*게임 버튼*/
+    #control-buttons {
+        display: none; 
+    }
+}
+
+/* 768px ~ 1023px */
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+    h1 {
+        font-size: 30px;
+    }
+    p {
+        font-size: 25px;
+    }
+    /*상단*/
+    #menu ul li {
+        font-size: 25px;
+    }
+    /*하단*/
+    #bottomMenu ul li a, #bottomMenu ul li a:visited {
+        font-size: 15px;
+    }
+    #company p {
+        font-size: 15px;
+    }
+    #sns img {
+        width: 40%;
+    }
+    /*로고*/
+    .logo {
+        font-size: 30px;
+    }
+    /*사진*/
+    .intro {
+        width: 47%;
+    }
+    /*게임 버튼*/
+    #control-buttons {
+        display: none; 
+    }
+    /*게임 화면*/
+    #canvas {
+        width: 95%;
+    }
+}
+
+/* 421px ~ 767px */
+@media only screen and (min-width: 421px) and (max-width: 767px) {
+    #newsFeed {
+        flex-direction: column; /* 화면이 좁아지면 세로로 배열 */
+        align-items: center; /* 세로로 정렬 */
+    }
+    h1 {
+        font-size: 25px;
+    }
+    p {
+        font-size: 20px;
+    }
+    /*상단*/
+    #menu ul li {
+        font-size: 20px;
+    }
+    /*하단*/
+    #bottomMenu ul li a, #bottomMenu ul li a:visited {
+        font-size: 12px;
+    }
+    #company p {
+        font-size: 12px;
+    }
+    #sns img {
+        width: 35%;
+    }
+    /*로고*/
+    .logo {
+        font-size: 30px;
+    }
+    /*사진*/
+    .intro {
+        width: 45%;
+    }
+    #npc {
+        width: 50%;
+    }
+    /*게임 버튼*/
+    #control-buttons {
+        display: flex;  
+    }
+    /*게임 화면*/
+    #canvas {
+        width: 90%;
+    }
+}
+
+/* 420px 이하 */
+@media only screen and (max-width: 420px) {
+    #newsFeed {
+        flex-direction: column; /* 화면이 좁아지면 세로로 배열 */
+        align-items: center; /* 세로로 정렬 */
+    }
+    h1 {
+        font-size: 20px;
+    }
+    p {
+        font-size: 15px;
+    }
+    /*상단*/
+    #menu ul li {
+        font-size: 15px;
+    }
+    /*하단*/
+    #bottomMenu ul li a, #bottomMenu ul li a:visited {
+        font-size: 12px;
+    }
+    #company p {
+        font-size: 12px;
+    }
+    #sns img {
+        width: 30%;
+    }
+    /*로고*/
+    .logo {
+        font-size: 30px;
+    }
+    /*사진*/
+    .intro {
+        width: 40%;
+    }
+    #npc {
+        width: 50%;
+    }
+    /*게임 버튼*/
+    #control-buttons {
+        display: flex;  
+    }
+    /*게임 화면*/
+    #canvas {
+        width: 80%;
+    }
+}
