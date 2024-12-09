@@ -1,7 +1,3 @@
-body {
-    overflow: hidden; /*스크롤 방지*/
-}
-
 canvas {
     background-color: #282828;
     margin: 0 auto;
@@ -15,5 +11,47 @@ canvas {
 
 #game_explain {
     width: 50%;
+    height: auto;
+}
+
+/*게임 버튼*/
+#control-buttons {
+    flex-direction: column;
+    align-items: center;
+   
+    gap: 10px; /*버튼 사이 간격*/
+    margin: 20px 0; /*상단, 하단 간격*/
+}
+
+#jump_btn, #crouch_btn, #mute_btn {
+    font-family:'bitbit';
+    font-size: 14px;
+    padding: 8px;
+    width: 100%;
+
+    border-radius: 3px; /* 둥근 테두리 */
+    padding: 10px 20px; /* 여백 */
+
+    background-color: #f589ff; /* 배경색 */
+    color: #282828; /* 글자색 */
+    border: none; /* 테두리 없애기 */
+
+    transition: all 0.3s ease; /* 애니메이션 */
+}
+
+/* 버튼에 마우스를 올렸을 때 */
+#jump_btn:hover, #crouch_btn:hover, #mute_btn:hover {
+    color: #81d8d1; /* 글자색 */
+    transform: translateY(-2px); /* 위로 살짝 올라감 */
+}
+
+/* 버튼 클릭 시 */
+#jump_btn:active, #crouch_btn:active, #mute_btn:active {
+    background-color: #81d8d1;  /* 클릭 시 배경색 */
+    transform: translateY(2px); /* 클릭 시 버튼이 내려감 */
+}
+
+/*게임 화면*/
+#canvas {
     height: auto;
 }
