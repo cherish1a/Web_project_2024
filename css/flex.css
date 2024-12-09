@@ -146,7 +146,7 @@ p {
     }
     /*게임 버튼*/
     #control-buttons {
-        display: none; 
+        display: flex;  
     }
     /*게임 화면*/
     #canvas {
