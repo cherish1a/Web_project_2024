@@ -1,18 +1,22 @@
 /*폰트*/
-@font-face {
+@font-face{
     font-family:'bitbit';
-    src: url('https://cdn.df.nexon.com/img/common/font/DNFBitBit-Regular.woff') format('woff');
+    src:url('https://cdn.df.nexon.com/img/common/font/DNFBitBit-Regular.woff') format('woff'),
+    url('https://cdn.df.nexon.com/img/common/font/DNFBitBit-Regular.woff2') format('woff2');
+}
+
+/* 이미지 선택 방지 */
+img {
+    user-select: none; 
 }
 
 /*글자*/
-h1 {
-    font-size: 45px;       
+h1 {  
     margin: 20px;        
 }
 
 p {
-    color: #ffffffab;
-    font-size: 40px;       
+    color: #ffffffab; 
     margin: 50px;         
 }
 
@@ -33,8 +37,11 @@ header {
     
     height: 75px;
 
+    z-index: 1000; /*헤더가 항상 앞으로 오게*/
+
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 section {
@@ -76,22 +83,17 @@ footer {
     border-right: none;
 }
 
-#bottomMenu ul li a, #bottomMenu ul li a:visited {
-    font-size: 20px;
-}
-
 #sns {
     position: absolute;
     right: 0;
 }
 
 #sns ul li {
+    padding: 1px;
     border: none;
-    padding: 5px;
 }
 
 #sns img {
-    width: 50%;
     height: auto;
 }
 
@@ -102,7 +104,6 @@ footer {
 }
 
 #company p {
-    font-size: 15px;
     color: #ffffff75;
 }
 
@@ -114,7 +115,6 @@ footer {
 #menu ul li {
     display: inline-block;
     margin-left: 30px;
-    font-size: 27px;
 }
 
 ul {
@@ -135,10 +135,6 @@ a:active {
     filter: brightness(0.5); /*클릭시*/
 }
 
-.logo {
-    font-size: 40px;
-}
-
 
 /*사진들*/
 .banner {
@@ -149,7 +145,6 @@ a:active {
 
 .intro {
     display: block;
-    width: 50%;
     height: auto;
     text-align:center;
 }
