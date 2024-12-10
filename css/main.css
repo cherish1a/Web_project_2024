@@ -29,3 +29,23 @@
         opacity: 0; 
     }
 }
+
+.intro {
+    opacity: 0;
+    transition: all 1s;
+}
+
+.intro.active {
+    opacity: 1;
+    transform: translate(20px, 0);
+}
+
+.introText {
+    opacity: 0;
+    transition: all 1s;
+}
+
+.introText.active {
+    opacity: 1;
+    transform: translate(-20px, 0);
+}
