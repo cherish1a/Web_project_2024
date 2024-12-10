@@ -28,4 +28,34 @@ $(document).ready(function () {
 
   // 3초마다 배너 변경
   setInterval(changeBanner, 3000);
+
+  // 클래스가 "intro"인 모든 요소 선택
+  const $intros = $(".intro");
+  const $introTexts = $(".introText");
+  const winHeight = window.innerHeight; 
+
+  // 윈도우 스크롤 이벤트 감지
+  $(window).on('scroll', function() {
+      // 각 "intro" 클래스를 가진 요소에 대해 반복.
+      $intros.each(function() {    
+          //요소의 위치 정보
+          const introRect = this.getBoundingClientRect();
+          
+          // intro에 active 클래스 추가
+          if ((introRect.top < winHeight) && (introRect.bottom > 0)) {
+              $(this).addClass('active');
+          }
+      });
+
+      // 각 "introText" 클래스를 가진 요소에 대해 반복.
+      $introTexts.each(function() {    
+        //요소의 위치 정보
+        const introTextRect = this.getBoundingClientRect();
+        
+        // introText에 active 클래스 추가
+        if ((introTextRect.top < winHeight) && (introTextRect.bottom > 0)) {
+            $(this).addClass('active');
+        }
+    });
+  }).scroll();
 });
