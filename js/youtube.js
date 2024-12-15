@@ -51,12 +51,12 @@ function drawChart(videos) {
       datasets: [{
         label: '조회수',
         data: viewCounts,
-        backgroundColor: 'rgba(54, 162, 235, 0.6)',
-        borderColor: 'rgba(54, 162, 235, 1)',
+        backgroundColor: '#f589ffaa',
+        borderColor: '#f589ff',
         borderWidth: 2,
         borderRadius: 5,
-        hoverBackgroundColor: 'rgba(54, 162, 235, 0.8)',
-        hoverBorderColor: 'rgba(54, 162, 235, 1)',
+        hoverBackgroundColor: '#81d8d1aa',
+        hoverBorderColor: '#81d8d1',
         type: 'bar',  // 조회수는 바 차트로 표시
         yAxisID: 'y1'  // 첫 번째 y축에 매핑
       }, {
