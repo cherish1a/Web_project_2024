@@ -283,6 +283,7 @@ function frame(){
         if (!dino.isShield && !gameOver && crash(dino, a)) {
             gameOverSound.play();
             cancelAnimationFrame(animation);
+            saveScore(score);
             gameOver = true; // 게임 종료
             gameOverScreen();
         }
