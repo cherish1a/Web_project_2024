@@ -62,3 +62,62 @@ canvas {
     justify-content: center;
     align-items: center;
 }
+
+/*점수 그래프*/
+#scoreChart {
+    width: 100%; /* 그래프가 컨테이너에 맞게 크기 조정 */
+    height: auto; /* 그래프 높이는 자동으로 조정 */
+}
+
+/*랭킹 보드*/
+#rankingBoard {
+    width: 80%; 
+    margin: 50px auto; /* 위쪽에 여백, 아래쪽 여백은 자동으로 중앙 정렬 */
+    text-align: center; 
+    background-color: #2a2a2a; 
+    padding: 20px; /* 테두리와 글씨 사이에 여백 추가 */
+    border-radius: 10px; /* 테두리 둥글게 처리 */
+   
+}
+
+#rankingBoard h1 {
+    color: #f589ff;
+    font-size: 30px; 
+    margin-bottom: 20px; /* 제목 아래에 여백 */
+}
+
+#rankingTable {
+    width: 100%; 
+    border-collapse: collapse; /* 경계 하나로 합침 */
+    background-color: #3a3a3a;
+    border-radius: 10px;
+    overflow: hidden; /* 경계를 넘어가지 않게 */
+}
+
+#rankingTable th, #rankingTable td {
+    padding: 15px; /* 셀 안의 텍스트에 여백 추가 */
+    text-align: center; 
+    color: white; 
+    font-size: 16px; 
+}
+
+#rankingTable th {
+    background-color: #f589ff; /* 헤더 부분 배경색 */
+    color: #282828;
+}
+
+#rankingTable tr:nth-child(even) {
+    background-color: #2a2a2a; /* 짝수 행 배경색 */
+}
+
+#rankingTable tr:nth-child(odd) {
+    background-color: #4b4b4b; /* 홀수 행 배경색 */
+}
+
+#rankingTable tr:hover {
+    background-color: #f589ff; /* 마우스 오버 시 배경색 */
+}
+
+#rankingTable td {
+    border-bottom: 1px solid #777; /* 테이블의 셀 하단에 선 추가 */
+}
