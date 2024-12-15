@@ -43,6 +43,7 @@ p {
 }
 /*소식 그래프*/
 #videoChart {
+    display: flex;
     height: auto;
 }
 
