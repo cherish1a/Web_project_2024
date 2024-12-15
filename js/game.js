@@ -149,7 +149,7 @@ let cactusSpeed = 5;
 let nextObstacleTime = Math.floor(Math.random() * 200) + 20;
 //아이템
 let shieldItem;
-let nextShieldTime = Math.floor(Math.random() * 600) + 1800;
+let nextShieldTime = Math.floor(Math.random() * 600) + 300;
 //게임 시작, 끝 여부
 let gameStarted = false; 
 let gameOver = false; 
@@ -244,7 +244,7 @@ function frame(){
     }
 
     //아이템
-    if(timer >= nextShieldTime && score >= 300){
+    if(timer >= nextShieldTime){
         shieldItem = new Item(cactusSpeed);
         nextShieldTime = timer + Math.floor(Math.random() * 600) + 1800; 
     }
@@ -365,7 +365,7 @@ document.addEventListener('mousedown', function () {
         cactusSpeed = 5;
         dino.isShield = false;
         dino.shieldTime = 0;
-        nextShieldTime = Math.floor(Math.random() * 600) + 1800;
+        nextShieldTime = Math.floor(Math.random() * 600) + 300;
         gameStarted = false; 
         gameOver = false;
         //배경음악 다시 재생
@@ -474,4 +474,119 @@ document.getElementById('mute_btn').addEventListener('click', function () {
 
 if (!gameStarted) {
     gameStartScreen(); // 게임 시작 전 시작 화면 표시
+}
+
+//스코어 그래프
+let scores = []; // 점수 배열
+const maxScores = 10; // 최대 점수 저장 개수
+let gameCount = 1; //1번부터 시작
+
+// Chart.js 그래프 초기화
+const score_ctx = document.getElementById('scoreChart').getContext('2d');
+
+// 그레디언트 생성 함수
+let width, height, gradient;
+function getGradient(ctx, chartArea) {
+    const chartWidth = chartArea.right - chartArea.left;
+    const chartHeight = chartArea.bottom - chartArea.top;
+    if (!gradient || width !== chartWidth || height !== chartHeight) {
+        // 차트 크기에 맞는 새로운 그레디언트를 생성
+        width = chartWidth;
+        height = chartHeight;
+        gradient = ctx.createLinearGradient(0, chartArea.bottom, 0, chartArea.top);
+        gradient.addColorStop(0, '#81d8d1'); // 노란색
+        gradient.addColorStop(0.5, '#FA7000'); // 주황색
+        gradient.addColorStop(1, '#f589ff'); // 보라색
+    }
+    return gradient;
+}
+
+const scoreChart = new Chart(score_ctx, {
+    type: 'line',
+    data: {
+        labels: [], // x축: 점수 인덱스
+        datasets: [{
+            label: 'Scores',
+            data: [], // y축: 점수 데이터
+            backgroundColor: (context) => {
+                const chartArea = context.chart.chartArea;
+                if (!chartArea) {
+                    // 그래프가 아직 초기화되지 않았으면 기본값 반환
+                    return '#f589ff';
+                }
+                return getGradient(score_ctx, chartArea);
+            },
+            borderColor: function(ctx) {
+                const chartArea = ctx.chart.chartArea;
+                if (!chartArea) return; // chartArea가 초기화되지 않았다면 무시
+                return getGradient(ctx.chart.ctx, chartArea);
+              },
+            borderWidth: 3
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+            y: {
+                beginAtZero: false
+            }
+        },
+        plugins: {
+            legend : {
+                display : false
+            }
+        }
+    }
+});
+
+// 점수 추가 및 업데이트 함수
+function saveScore(newScore) {
+    // 점수를 배열에 추가하고, 게임 번호를 순차적으로 증가시킴
+    scores.push({ game: gameCount, score: newScore });
+    gameCount++; // 게임 번호 증가
+
+    if (scores.length > maxScores) {
+        scores.shift(); // 오래된 점수 제거
+    }
+    updateChart(); //그래프 업데이트
+    updateRankingBoard(); // 랭킹 보드 업데이트
+}
+
+// 그래프 업데이트
+function updateChart() {
+    // x축에 게임 번호 (게임1, 게임2, ...)
+    scoreChart.data.labels = scores.map(score => `게임${score.game}`);
+    
+    // 점수 데이터를 y축에 반영
+    scoreChart.data.datasets[0].data = scores.map(score => score.score);
+
+    // 그래프를 업데이트
+    scoreChart.update();
+}
+
+// 랭킹 보드 업데이트 함수
+function updateRankingBoard() {
+     // 랭킹 보드를 업데이트할 테이블 body
+     const rankingTableBody = document.getElementById('rankingTable').getElementsByTagName('tbody')[0];
+
+     // 기존 테이블 내용을 모두 삭제
+     rankingTableBody.innerHTML = '';
+ 
+     // 점수 배열을 내림차순으로 정렬
+     const sortedScores = [...scores].sort((a, b) => b.score - a.score);
+ 
+     // 최대 10개 점수만 표시
+     sortedScores.slice(0, maxScores).forEach((score, index) => {
+         const row = document.createElement('tr');
+         const gameCell = document.createElement('td');
+         const scoreCell = document.createElement('td');
+ 
+         gameCell.textContent = `게임${score.game}`; // 순차적인 게임 번호
+         scoreCell.textContent = score.score;
+ 
+         row.appendChild(gameCell);
+         row.appendChild(scoreCell);
+         rankingTableBody.appendChild(row);
+     });
 }
