@@ -41,6 +41,10 @@ p {
 #control-buttons {
     display: none;  /* 기본적으로 숨김 */
 }
+/*소식 그래프*/
+#videoChart {
+    height: auto;
+}
 
 /* 1366px 이상의 너비 */
 @media only screen and (min-width: 1366px) {
@@ -156,6 +160,11 @@ p {
         display: flex;  
         flex-direction: column; /* 세로 */
     }
+    /*소식 그래프*/
+    #videoChart {
+         width: 95%;
+    }
+
 }
 
 /* 421px ~ 767px */
@@ -207,6 +216,10 @@ p {
         display: flex;  
         flex-direction: column; /* 세로 */
     }
+    /*소식 그래프*/
+    #videoChart {
+         width: 90%;
+    }
 }
 
 /* 420px 이하 */
@@ -257,5 +270,9 @@ p {
     #board {
         display: flex;  
         flex-direction: column; /* 세로 */
+    }
+    /*소식 그래프*/
+    #videoChart {
+         width: 80%;
     }
 }
