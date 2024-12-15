@@ -152,6 +152,10 @@ p {
     #canvas {
         width: 95%;
     }
+    #board {
+        display: flex;  
+        flex-direction: column; /* 세로 */
+    }
 }
 
 /* 421px ~ 767px */
@@ -199,6 +203,10 @@ p {
     #canvas {
         width: 90%;
     }
+    #board {
+        display: flex;  
+        flex-direction: column; /* 세로 */
+    }
 }
 
 /* 420px 이하 */
@@ -245,5 +253,9 @@ p {
     /*게임 화면*/
     #canvas {
         width: 80%;
+    }
+    #board {
+        display: flex;  
+        flex-direction: column; /* 세로 */
     }
 }
