@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Muto C</title>
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <link rel="stylesheet" href="./css/flex.css">
   <link rel="stylesheet" href="./css/style.css">
   <link rel="stylesheet" href="./css/news.css">
@@ -41,6 +42,16 @@
         </div>
       </article>
     </section> 
+
+    <section>
+      <article>
+        <h1>실시간 유튜브 영상</h1>
+        <div>
+          <!-- 유튜브 영상 차트 -->
+          <canvas id="videoChart" width="1280" height="720"></canvas>  
+        </div>
+      </article>
+    </section>
     
     <section id="newsFeed">
       <article style="flex:1">
