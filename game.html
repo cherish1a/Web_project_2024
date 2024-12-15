@@ -5,6 +5,7 @@
   <title>Muto C</title>
 
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <link rel="stylesheet" href="./css/flex.css">
   <link rel="stylesheet" href="./css/game.css">
   <link rel="stylesheet" href="./css/style.css">
@@ -48,6 +49,30 @@
     </article>
   </section>
 
+  <section>
+    <article>
+      <!-- 랭킹 보드 -->
+        <div id="rankingBoard">
+          <h1>랭킹 보드</h1>
+          <table id="rankingTable">
+              <thead>
+                  <tr>
+                      <th>Game</th>
+                      <th>Score</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <!-- 점수 들어감 -->
+              </tbody>
+          </table>
+      </div>
+    </article>
+    <article>
+      <!--점수 히스토리 차트-->
+      <canvas id="scoreChart" width="600" height="400"></canvas>
+    </article>
+  </section>
+  
 </body>
 
 <!--게임-->
