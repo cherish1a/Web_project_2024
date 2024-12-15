@@ -139,7 +139,6 @@ let score = 0;
 let timer = 0;
 //점프
 let jump = false;
-let jump_timer = 0;
 let jump_speed = 12;
 let gravity = 0.5;
 let crouchRequested = false;
@@ -358,15 +357,19 @@ document.addEventListener('mousedown', function () {
         //초기화
         score = 0;
         timer = 0;
-        nextObstacleTime = Math.floor(Math.random() * 200) + 30;
+        //점프
         jump = false;
-        jump_timer = 0;
         jump_speed = 12;
+        //장애물
+        nextObstacleTime = Math.floor(Math.random() * 200) + 30;
         cactus_arr = [];
         cactusSpeed = 5;
+        //쉴드
         dino.isShield = false;
         dino.shieldTime = 0;
         nextShieldTime = Math.floor(Math.random() * 600) + 300;
+        shieldItem = null;
+        //게임 시작, 종료
         gameStarted = false; 
         gameOver = false;
         //배경음악 다시 재생
