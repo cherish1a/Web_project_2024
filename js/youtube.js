@@ -1,5 +1,5 @@
 // 서버의 URL
-const SERVER_URL = 'https://34.64.218.204:3000';
+const SERVER_URL = 'https://che1sh1.com:3000';
 
 const channelId = 'UC1sELGmy5jp5fQUugmuYlXQ'; // 마인크래프트 채널 ID
 
