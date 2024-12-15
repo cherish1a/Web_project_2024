@@ -62,8 +62,8 @@ function drawChart(videos) {
       }, {
         label: '좋아요',
         data: likeCounts,
-        borderColor: 'rgba(255, 99, 132, 1)',  // 라인 차트의 선 색상
-        backgroundColor: 'rgba(255, 99, 132, 0.2)',  // 라인 차트의 배경색
+        borderColor: '#FA7000',  // 라인 차트의 선 색상
+        backgroundColor: '#FA7000aa',  // 라인 차트의 배경색
         fill: false,  // 배경을 채우지 않음
         borderWidth: 2,
         tension: 0.3,  // 라인 차트의 부드러움 설정
@@ -82,7 +82,7 @@ function drawChart(videos) {
               return videoTitles[index];  // 툴팁에서 전체 제목 표시
             }
           },
-          backgroundColor: 'rgba(0,0,0,0.7)',
+          backgroundColor: '#000000B3',
           titleColor: '#fff',
           bodyColor: '#fff'
         },
